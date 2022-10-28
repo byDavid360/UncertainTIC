@@ -1,0 +1,110 @@
+Start Sensor 0
+20
+Start Sensor 1
+22
+Start Sensor 0
+20
+Start Sensor 1
+22
+Sensors ready! Start reading sensors in 3 seconds ...!
+
+
+<telemetry>
+    <sensor>
+      <name>Temperature01</name>
+      <type>temperature</type>
+      <value>27.11</value>
+      <unit>Celsius</unit>
+    </sensor>
+    <sensor>
+      <name>Distance01</name>
+      <type>distance</type>
+      <value>
+Start Sensor 0
+20
+Start Sensor 1
+22
+Sensors ready! Start reading sensors in 3 seconds ...!
+
+
+<telemetry>
+    <sensor>
+      <name>Temperature01</name>
+      <type>temperature</type>
+      <value>27.37</value>
+      <unit>Celsius</unit>
+    </sensor>
+    <sensor>
+      <name>Distance01</name>
+      <type>distance</type>
+      <value>255</value>
+      <unit>milimeters</unit>
+    </sensor>
+    <sensor>
+      <name>Distance02</name>
+      <type>distance</type>
+      <value>255</value>
+      <unit>milimeters</unit>
+    </sensor>
+    <sensor>
+      <name>Accelerometer01</name>
+      <type>imu</type>
+      <valueX>510</valueX>
+      <valueY>-258</valueY>
+      <valueZ>-258</valueZ>
+      <unit>UNDEFINED</unit>
+    </sensor>
+    <sensor>
+      <name>Gyroscope01</name>
+      <type>imu</type>
+      <valueX>-258</valueX>
+      <valueY>-258</valueY>
+      <valueZ>-258</valueZ>
+      <unit>UNDEFINED</unit>
+    </sensor>
+</telemetry>
+
+
+<telemetry>
+    <sensor>
+      <name>Temperature01</name>
+      <type>temperature</type>
+      <value>27.37</value>
+      <unit>Celsius</unit>
+    </sensor>
+    <sensor>
+      <name>Distance01</name>
+      <type>distance</type>
+      <value>255</value>
+      <unit>milimeters</unit>
+    </sensor>
+    <sensor>
+      <name>Distance02</name>
+      <type>distance</type>
+      <value>
+Start Sensor 0
+20
+Start Sensor 1
+22
+Sensors ready! Start reading sensors in 3 seconds ...!
+
+
+<telemetry>
+    <sensor>
+      <name>Temperature01</name>
+      <type>temperature</type>
+      <value>27.11</value>
+      <unit>Celsius</unit>
+    </sensor>
+    <sensor>
+      <name>Distance01</name>
+      <type>distance</type>
+      <value>255</value>
+      <unit>milimeters</unit>
+    </sensor>
+    <sensor>
+      <name>Distance02</name>
+      <type>distance</type>
+      <value>255</value>
+      <unit>milimeters</unit>
+    </sensor>
