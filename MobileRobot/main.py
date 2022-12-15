@@ -1,7 +1,7 @@
 """
     Código en el que se integra el funcionamiento del MR tanto el subscriptor como el publicador
 
-    Ultima fecha de edicion: 2/12/22
+    Ultima fecha de edicion: 15/12/22
 """
 
 #Librerias para el uso de MQTT
@@ -42,9 +42,6 @@ name_video = "video_"
 filename_h264 = ""
 filename_mp4 = "" 
 #Comandos válidos para la camara
-# c -> Snapshot
-# v -> Start Recording
-# sv -> Stop Recording
 available_camera = ["photo", "start_record", "stop_record", "start_live", "stop_live"]
 
 # Auxiliar flag for possible impact income, set to false after stop and system prevents it from taking the direction it was going
@@ -192,7 +189,7 @@ def connect_mqtt() -> mqtt_client:
     return client
 
 
-
+#Función de publicación de MQTT
 def publish(client):
   #Hacemos global la variable del contador de samples
     global cont, flag_ard, flag_camera, lineArduino
@@ -215,6 +212,7 @@ def publish(client):
         if ser.in_waiting > 0:
             # Leo los datos recividos por la interfaz serial
             line = ser.readline().decode('utf-8').rstrip()
+            print(line)
         #Cada 10 sample
         while cont<10:
         
@@ -235,7 +233,10 @@ def publish(client):
         #Reseteamos el contador y vaciamos la lista
         cont = 0
         lista_temps.clear()
-        msg = id_MR + ";" + line + " " + str(media)
+        #Datos para pasarle al collision avoidance system
+        line_avoid_coll = line + " " + str(media) 
+        #Mensaje a publicar (contiene el ID)
+        msg = id_MR + ";" + line_avoid_coll
         result = client.publish(topics_pub[0],msg)
         print("Dato enviado: ", msg)
         lineArduino = msg
@@ -248,11 +249,12 @@ def publish(client):
             print(f"Failed to send message to topic {topics_pub[0]}")
     
         print("\n") 
-        collision_avoidance_system(msg)
+        collision_avoidance_system(line_avoid_coll)
         # time.sleep(0.5)
 
 
 
+#Función de subscripción al broker MQTT
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
       
@@ -528,6 +530,8 @@ def subscribe(client: mqtt_client):
         print("Subscribed to topic: " + topico)
     client.on_message = on_message
 
+
+#Función para el tratado de los datos RX por MQTT
 def data_handling(rx_data):
     #FORMATO DEL STRING QUE LLEGA
     # RESTRUCTURAR COMO SIGUE:
@@ -591,6 +595,9 @@ def data_handling(rx_data):
                  
     return dict_data
 
+
+
+#Función que implementa el collision avoidance system
 def collision_avoidance_system(line):
     global collision_front, collision_rear, stop_under_incom_impact, keep_run_forward, keep_run_backward
 
@@ -638,7 +645,7 @@ def run():
  #=========================== MQTT ======================================
 
 
- #=========================== ARDUINO ====================================       TODO lógica del sistema de archivos
+ #=========================== ARDUINO ====================================   
 
 def runBBDD():
     lineOld = ""
