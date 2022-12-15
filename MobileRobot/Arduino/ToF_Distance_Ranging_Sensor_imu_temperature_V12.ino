@@ -152,5 +152,5 @@ void loop()
   Serial.print(Temperatura);Serial.print("\n");
   //Serial.print(Temperatura);Serial.print(" ");Serial.print(Temperatura);Serial.print("\n");
   
-  delay(10);
+  delay(500);
 }
